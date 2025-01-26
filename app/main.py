@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from mangum import Mangum
-from app.api.api_v1.endpoints.posts import router as user_api
+from app.api.api_v1.api import router as api_router
 
 
 app = FastAPI()
@@ -10,6 +10,6 @@ app = FastAPI()
 async def root():
   return {"Welcome": "Serveless-blog-api"}
 
-app.include_router(user_api, prefix="/api/v1")
+app.include_router(api_router, prefix="/api/v1")
 
 handler = Mangum(app)
