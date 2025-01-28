@@ -1,9 +1,11 @@
+import os
 from fastapi import FastAPI
 from mangum import Mangum
 from app.api.api_v1.api import router as api_router
 
+load_dotenv()
 
-app = FastAPI()
+app = FastAPI(root_path=os.getenv("ROOT_PATH"))
 
 
 @app.get("/")
